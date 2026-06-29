@@ -6,204 +6,448 @@
 
   <title>BTKD Smart Portal | โรงเรียนบ้านทุ่งไก่ดัก</title>
 
-  <!-- ฟอนต์ Sarabun สำหรับเว็บไซต์ คล้าย TH SarabunPSK และใช้ได้ทุกอุปกรณ์ -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     * {
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: 'Sarabun', sans-serif;
-      background: #f4f7f2;
-      color: #1f2d1f;
+      background: #f7f4ec;
+      color: #23301f;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .topbar {
+      background: #174a22;
+      color: #fff7db;
+      padding: 8px 8%;
+      font-size: 17px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
     }
 
     header {
-      background: linear-gradient(135deg, #1b5e20, #2e7d32);
-      color: white;
-      padding: 22px 8%;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      padding: 16px 8%;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
       flex-wrap: wrap;
     }
 
-    .logo {
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #2e7d32, #d4a72c);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      color: white;
+      box-shadow: 0 8px 18px rgba(46,125,50,0.25);
+    }
+
+    .brand-title {
       font-size: 26px;
-      font-weight: 700;
+      font-weight: 800;
+      color: #174a22;
+      line-height: 1.2;
+    }
+
+    .brand-subtitle {
+      font-size: 17px;
+      color: #7b6a32;
+      font-weight: 500;
+    }
+
+    nav {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      align-items: center;
     }
 
     nav a {
-      color: white;
-      text-decoration: none;
-      margin-left: 18px;
-      font-size: 19px;
-      font-weight: 500;
+      font-size: 18px;
+      font-weight: 600;
+      color: #27462b;
+    }
+
+    nav a:hover {
+      color: #b38212;
     }
 
     .hero {
-      background: linear-gradient(135deg, #2e7d32, #6d9f3f);
-      color: white;
+      min-height: 560px;
       padding: 75px 8%;
-      text-align: center;
+      background:
+        radial-gradient(circle at top left, rgba(255,245,199,0.95), transparent 34%),
+        linear-gradient(135deg, rgba(23,74,34,0.95), rgba(57,125,52,0.92)),
+        url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      display: grid;
+      grid-template-columns: 1.4fr 0.8fr;
+      gap: 35px;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.16);
+      border: 1px solid rgba(255,255,255,0.32);
+      padding: 8px 18px;
+      border-radius: 999px;
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 18px;
     }
 
     .hero h1 {
-      font-size: 58px;
-      margin: 0 0 12px;
-      font-weight: 700;
+      font-size: 62px;
+      line-height: 1.08;
+      margin: 0 0 16px;
+      font-weight: 800;
     }
 
     .hero p {
-      font-size: 28px;
-      margin: 8px 0;
+      font-size: 26px;
+      line-height: 1.7;
+      margin: 0 0 18px;
+      color: #fff9df;
     }
 
-    .hero .tagline {
-      margin-top: 18px;
-      font-size: 26px;
-      color: #fff8d6;
-      font-weight: 500;
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 24px;
+      border-radius: 999px;
+      font-size: 20px;
+      font-weight: 700;
+      transition: 0.25s;
+    }
+
+    .btn-primary {
+      background: #d6a11d;
+      color: #1f2d1f;
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.16);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.4);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .hero-panel {
+      background: rgba(255,255,255,0.94);
+      color: #23301f;
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.24);
+    }
+
+    .hero-panel h3 {
+      margin: 0 0 15px;
+      font-size: 28px;
+      color: #174a22;
+    }
+
+    .hero-panel ul {
+      margin: 0;
+      padding-left: 24px;
+      font-size: 20px;
+      line-height: 1.9;
     }
 
     .section {
-      padding: 45px 8%;
+      padding: 58px 8%;
     }
 
     .section-title {
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 35px;
+    }
+
+    .section-title .small {
+      color: #b38212;
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
     }
 
     .section-title h2 {
-      font-size: 40px;
-      margin-bottom: 8px;
-      color: #1b5e20;
+      font-size: 44px;
+      margin: 6px 0 8px;
+      color: #174a22;
+      font-weight: 800;
     }
 
     .section-title p {
-      color: #5f6f5f;
       font-size: 22px;
+      color: #68705e;
+      margin: 0;
     }
 
-    .grid {
+    .dashboard {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 22px;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 18px;
+      margin-top: -55px;
+      position: relative;
+      z-index: 5;
     }
 
-    .card {
-      .link-card {
-  text-decoration: none;
-  color: inherit;
-  display: block;
-}
+    .stat-card {
       background: white;
-      border-radius: 20px;
-      padding: 30px;
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: 0 14px 34px rgba(0,0,0,0.12);
       text-align: center;
-      box-shadow: 0 8px 22px rgba(0,0,0,0.08);
-      transition: 0.25s;
-      border-top: 6px solid #7cb342;
+      border-bottom: 6px solid #d6a11d;
     }
 
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+    .stat-icon {
+      font-size: 34px;
     }
 
-    .icon {
+    .stat-number {
       font-size: 38px;
+      font-weight: 800;
+      color: #174a22;
+      margin: 5px 0;
+    }
+
+    .stat-label {
+      font-size: 20px;
+      color: #6a6f61;
+      font-weight: 600;
+    }
+
+    .portal-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .portal-card {
+      background: white;
+      border-radius: 26px;
+      padding: 30px;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+      border-top: 7px solid #2e7d32;
+      transition: 0.25s;
+      min-height: 250px;
+    }
+
+    .portal-card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 16px 35px rgba(0,0,0,0.13);
+    }
+
+    .portal-icon {
+      font-size: 42px;
       margin-bottom: 12px;
     }
 
-    .card h3 {
-      margin: 8px 0;
-      font-size: 28px;
-      font-weight: 700;
+    .portal-card h3 {
+      margin: 0 0 10px;
+      font-size: 31px;
+      color: #174a22;
+      font-weight: 800;
     }
 
-    .card p {
+    .portal-card p {
+      font-size: 21px;
+      color: #63705d;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .feature-section {
+      background: #fffdf6;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 26px;
+      align-items: stretch;
+    }
+
+    .feature-box {
+      background: white;
+      border-radius: 28px;
+      padding: 32px;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+    }
+
+    .feature-box h3 {
+      font-size: 34px;
+      color: #174a22;
+      margin: 0 0 15px;
+    }
+
+    .feature-box p {
+      font-size: 22px;
+      line-height: 1.8;
+      color: #5d6758;
+    }
+
+    .quick-links {
+      display: grid;
+      gap: 12px;
+    }
+
+    .quick-link {
+      background: #f6f9f0;
+      border-left: 6px solid #d6a11d;
+      padding: 14px 18px;
+      border-radius: 14px;
+      font-size: 21px;
+      font-weight: 700;
+      color: #244a28;
+      transition: 0.2s;
+    }
+
+    .quick-link:hover {
+      background: #fff3c9;
+      transform: translateX(4px);
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 22px;
+    }
+
+    .news-card {
+      background: white;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 10px 26px rgba(0,0,0,0.08);
+    }
+
+    .news-img {
+      height: 150px;
+      background: linear-gradient(135deg, #2e7d32, #d6a11d);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 46px;
+    }
+
+    .news-content {
+      padding: 22px;
+    }
+
+    .news-content h3 {
+      margin: 0 0 8px;
+      font-size: 27px;
+      color: #174a22;
+    }
+
+    .news-content p {
+      margin: 0;
       font-size: 20px;
-      color: #617061;
+      color: #63705d;
       line-height: 1.7;
     }
 
-    .about {
-      background: white;
-      border-radius: 24px;
-      padding: 35px;
-      box-shadow: 0 8px 22px rgba(0,0,0,0.08);
-      line-height: 1.9;
-      font-size: 22px;
+    .identity {
+      background: linear-gradient(135deg, #174a22, #2e7d32);
+      color: white;
+      text-align: center;
     }
 
-    .about h2 {
-      color: #1b5e20;
-      font-size: 36px;
-      margin-top: 0;
+    .identity h2 {
+      font-size: 44px;
+      margin: 0 0 12px;
     }
 
-    .highlight {
-      background: #fff8dc;
-      border-left: 6px solid #d6a11d;
-      padding: 18px 22px;
-      margin-top: 20px;
-      border-radius: 12px;
-      font-size: 22px;
+    .identity p {
+      font-size: 24px;
+      line-height: 1.8;
+      color: #fff7d6;
+      max-width: 900px;
+      margin: 0 auto;
     }
 
     footer {
-      background: #1b5e20;
+      background: #123719;
       color: white;
+      padding: 34px 8%;
       text-align: center;
-      padding: 25px;
-      margin-top: 40px;
-      font-size: 20px;
+      font-size: 19px;
+      line-height: 1.7;
     }
 
-    @media (max-width: 700px) {
-      header {
-        text-align: center;
-        justify-content: center;
-      }
-
-      nav {
-        margin-top: 15px;
-      }
-
-      nav a {
-        display: inline-block;
-        margin: 6px;
+    @media (max-width: 850px) {
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        padding: 55px 7%;
       }
 
       .hero h1 {
-        font-size: 40px;
+        font-size: 44px;
       }
 
       .hero p {
         font-size: 22px;
       }
 
-      .hero .tagline {
-        font-size: 22px;
+      .features {
+        grid-template-columns: 1fr;
       }
 
-      .section-title h2 {
-        font-size: 32px;
+      header {
+        justify-content: center;
+        text-align: center;
       }
 
-      .card h3 {
-        font-size: 24px;
-      }
-
-      .card p {
-        font-size: 18px;
+      nav {
+        justify-content: center;
+        margin-top: 12px;
       }
     }
   </style>
@@ -211,99 +455,262 @@
 
 <body>
 
+  <div class="topbar">
+    <div>โรงเรียนบ้านทุ่งไก่ดัก สำนักงานเขตพื้นที่การศึกษาประถมศึกษาตราด</div>
+    <div>BTKD Smart Portal | ศูนย์กลางข้อมูลดิจิทัลของโรงเรียน</div>
+  </div>
+
   <header>
-    <div class="logo">🌾 BTKD Smart Portal</div>
+    <div class="brand">
+      <div class="brand-icon">🌾</div>
+      <div>
+        <div class="brand-title">โรงเรียนบ้านทุ่งไก่ดัก</div>
+        <div class="brand-subtitle">BTKD Smart Portal</div>
+      </div>
+    </div>
+
     <nav>
-      <a href="#">หน้าแรก</a>
-      <a href="#">เอกสาร</a>
-      <a href="#">ภาพกิจกรรม</a>
-      <a href="#">ติดต่อ</a>
+      <a href="#home">หน้าแรก</a>
+      <a href="#portal">ระบบหลัก</a>
+      <a href="#drive">คลังข้อมูล</a>
+      <a href="#news">ข่าวสาร</a>
+      <a href="#contact">ติดต่อ</a>
     </nav>
   </header>
 
-  <section class="hero">
-    <h1>โรงเรียนบ้านทุ่งไก่ดัก</h1>
-    <p>ศูนย์กลางข้อมูลดิจิทัลของโรงเรียน</p>
-    <p class="tagline">“รวงข้าวแห่งปัญญา ร่วมพัฒนาคู่ชุมชน”</p>
-  </section>
-
-  <section class="section">
-    <div class="section-title">
-      <h2>เมนูหลักของระบบ</h2>
-      <p>รวบรวมข้อมูล เอกสาร ภาพกิจกรรม และองค์ความรู้ของโรงเรียนไว้ในที่เดียว</p>
-    </div>
-
-    <div class="grid">
-      <div class="card">
-        <div class="icon">📢</div>
-        <h3>ข่าวประชาสัมพันธ์</h3>
-        <p>ติดตามข่าวสาร กิจกรรม และประกาศสำคัญของโรงเรียน</p>
-      </div>
-
-      <a class="card link-card" href="https://drive.google.com/drive/folders/1G39yFTVWvX7qsfSIWYS3mIKIUqQNelS-?usp=sharing" target="_blank">
-  <div class="icon">📂</div>
-  <h3>คลังเอกสาร</h3>
-  <p>เปิดคลังข้อมูล Google Drive ของโรงเรียนบ้านทุ่งไก่ดัก</p>
-</a>
-
-      <div class="card">
-        <div class="icon">📸</div>
-        <h3>ภาพกิจกรรม</h3>
-        <p>รวมภาพกิจกรรมของนักเรียน ครู ผู้ปกครอง และชุมชน</p>
-      </div>
-
-      <div class="card">
-        <div class="icon">🌾</div>
-        <h3>หลักสูตรข้าวโสมบรรทัด</h3>
-        <p>นำเสนอหลักสูตรท้องถิ่นฐานสมรรถนะและแหล่งเรียนรู้ชุมชน</p>
-      </div>
-
-      <div class="card">
-        <div class="icon">🏆</div>
-        <h3>โรงเรียนสุจริต</h3>
-        <p>รวบรวมหลักฐาน กิจกรรม ผลงาน และกระบวนการพัฒนาโรงเรียนสุจริต</p>
-      </div>
-
-      <div class="card">
-        <div class="icon">📚</div>
-        <h3>งานวิจัย / วPA</h3>
-        <p>คลังงานวิจัย นวัตกรรมทางการศึกษา และการพัฒนางานตามข้อตกลง</p>
-      </div>
-
-      <div class="card">
-        <div class="icon">🤝</div>
-        <h3>SAM CHAIY Network</h3>
-        <p>ข้อมูลเครือข่ายความร่วมมือ ชายเขา ชายเลน ชายเล</p>
-      </div>
-
-      <div class="card">
-        <div class="icon">🔍</div>
-        <h3>ค้นหาเอกสาร</h3>
-        <p>ระบบค้นหาไฟล์และองค์ความรู้ของโรงเรียน จะพัฒนาในขั้นถัดไป</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="about">
-      <h2>เกี่ยวกับ BTKD Smart Portal</h2>
+  <section class="hero" id="home">
+    <div>
+      <div class="hero-badge">🌾 ข้าว • ดิน • ชุมชน • ปัญญา</div>
+      <h1>BTKD Smart Portal</h1>
       <p>
-        BTKD Smart Portal เป็นระบบศูนย์กลางข้อมูลดิจิทัลของโรงเรียนบ้านทุ่งไก่ดัก
-        จัดทำขึ้นเพื่อรวบรวมเอกสาร ข่าวสาร ภาพกิจกรรม ผลงาน นวัตกรรม
-        และองค์ความรู้ของโรงเรียนให้สามารถเข้าถึงได้สะดวก เป็นระบบ
-        และพร้อมต่อการพัฒนาอย่างต่อเนื่อง
+        ศูนย์กลางข้อมูลดิจิทัลของโรงเรียนบ้านทุ่งไก่ดัก
+        เชื่อมโยงเอกสาร องค์ความรู้ นวัตกรรม และกิจกรรมของโรงเรียนไว้ในที่เดียว
       </p>
 
-      <div class="highlight">
-        เป้าหมายของระบบนี้ คือการพัฒนาโรงเรียนให้เป็นองค์กรแห่งการเรียนรู้
-        เชื่อมโยงการบริหารจัดการ การจัดการเรียนรู้ และการมีส่วนร่วมของชุมชน
-        ผ่านฐานข้อมูลดิจิทัลที่ใช้งานได้จริง
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://drive.google.com/drive/folders/1G39yFTVWvX7qsfSIWYS3mIKIUqQNelS-?usp=sharing" target="_blank">
+          📂 เปิด Google Drive โรงเรียน
+        </a>
+        <a class="btn btn-secondary" href="#portal">
+          สำรวจระบบ
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-panel">
+      <h3>ระบบนี้ออกแบบเพื่อ</h3>
+      <ul>
+        <li>จัดเก็บเอกสารโรงเรียนอย่างเป็นระบบ</li>
+        <li>เผยแพร่ข่าวสารและกิจกรรมสำคัญ</li>
+        <li>รวบรวมหลักฐานงานคุณภาพและนวัตกรรม</li>
+        <li>สนับสนุนครู นักเรียน ผู้ปกครอง และชุมชน</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="dashboard">
+      <div class="stat-card">
+        <div class="stat-icon">👨‍🎓</div>
+        <div class="stat-number">127</div>
+        <div class="stat-label">นักเรียน</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon">👩‍🏫</div>
+        <div class="stat-number">7</div>
+        <div class="stat-label">ครูและบุคลากร</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon">📂</div>
+        <div class="stat-number">Drive</div>
+        <div class="stat-label">คลังข้อมูลโรงเรียน</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon">🌾</div>
+        <div class="stat-number">PBL</div>
+        <div class="stat-label">เรียนรู้ฐานชุมชน</div>
       </div>
     </div>
   </section>
 
-  <footer>
-    โรงเรียนบ้านทุ่งไก่ดัก สพป.ตราด | BTKD Smart Portal © 2569
+  <section class="section" id="portal">
+    <div class="section-title">
+      <div class="small">MAIN PORTAL</div>
+      <h2>4 ประตูหลักของระบบ</h2>
+      <p>ออกแบบให้สอดคล้องกับอัตลักษณ์และการพัฒนาคุณภาพของโรงเรียน</p>
+    </div>
+
+    <div class="portal-grid">
+      <a class="portal-card" href="#drive">
+        <div class="portal-icon">📂</div>
+        <h3>คลังความรู้</h3>
+        <p>เอกสารโรงเรียน SAR แผนปฏิบัติการ คู่มือ แบบฟอร์ม วPA งานวิจัย และหลักฐานสำคัญ</p>
+      </a>
+
+      <a class="portal-card" href="#news">
+        <div class="portal-icon">📢</div>
+        <h3>ข่าวและกิจกรรม</h3>
+        <p>ข่าวประชาสัมพันธ์ กิจกรรมสำคัญ ภาพกิจกรรม และเรื่องราวของนักเรียนกับชุมชน</p>
+      </a>
+
+      <a class="portal-card" href="#learning">
+        <div class="portal-icon">🌾</div>
+        <h3>เรียนรู้ฐานชุมชน</h3>
+        <p>หลักสูตรข้าวโสมบรรทัด PBL PLC แหล่งเรียนรู้ และภูมิปัญญาท้องถิ่น</p>
+      </a>
+
+      <a class="portal-card" href="#quality">
+        <div class="portal-icon">🏆</div>
+        <h3>คุณภาพและนวัตกรรม</h3>
+        <p>โรงเรียนสุจริต IQA SAM CHAIY Model งานวิจัย และการพัฒนาคุณภาพอย่างต่อเนื่อง</p>
+      </a>
+    </div>
+  </section>
+
+  <section class="section feature-section" id="drive">
+    <div class="section-title">
+      <div class="small">GOOGLE DRIVE CENTER</div>
+      <h2>คลังข้อมูล Google Drive</h2>
+      <p>เชื่อมโยงเอกสารและไฟล์สำคัญจาก Google Drive ของโรงเรียน</p>
+    </div>
+
+    <div class="features">
+      <div class="feature-box">
+        <h3>📂 คลังเอกสารโรงเรียน</h3>
+        <p>
+          จุดเริ่มต้นของระบบนี้คือการเชื่อมโยง Google Drive ของโรงเรียน
+          เพื่อให้ครู ผู้บริหาร และผู้เกี่ยวข้องเข้าถึงข้อมูลได้สะดวกขึ้น
+          โดยยังคงใช้ Drive เดิมของโรงเรียนเป็นแหล่งจัดเก็บหลัก
+        </p>
+        <a class="btn btn-primary" href="https://drive.google.com/drive/folders/1G39yFTVWvX7qsfSIWYS3mIKIUqQNelS-?usp=sharing" target="_blank">
+          เปิดคลัง Google Drive
+        </a>
+      </div>
+
+      <div class="feature-box">
+        <h3>ลิงก์ด่วน</h3>
+        <div class="quick-links">
+          <a class="quick-link" href="https://drive.google.com/drive/folders/1G39yFTVWvX7qsfSIWYS3mIKIUqQNelS-?usp=sharing" target="_blank">📁 Google Drive โรงเรียน</a>
+          <a class="quick-link" href="#">📄 เอกสารเผยแพร่</a>
+          <a class="quick-link" href="#">📸 ภาพกิจกรรม</a>
+          <a class="quick-link" href="#">🌾 หลักสูตรข้าวโสมบรรทัด</a>
+          <a class="quick-link" href="#">🏆 โรงเรียนสุจริต</a>
+          <a class="quick-link" href="#">📚 งานวิจัย / วPA</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="news">
+    <div class="section-title">
+      <div class="small">NEWS & ACTIVITIES</div>
+      <h2>ข่าวประชาสัมพันธ์และกิจกรรม</h2>
+      <p>พื้นที่นำเสนอเรื่องราว ความสำเร็จ และกิจกรรมของโรงเรียน</p>
+    </div>
+
+    <div class="news-grid">
+      <div class="news-card">
+        <div class="news-img">🌾</div>
+        <div class="news-content">
+          <h3>กิจกรรมทำนาโยน ปีที่ 4</h3>
+          <p>สืบสานวิถีชาวนา เชื่อมโยงการเรียนรู้ฐานชุมชนและหลักสูตรท้องถิ่น</p>
+        </div>
+      </div>
+
+      <div class="news-card">
+        <div class="news-img">🏆</div>
+        <div class="news-content">
+          <h3>โรงเรียนสุจริต</h3>
+          <p>ส่งเสริมคุณลักษณะความซื่อสัตย์สุจริต วินัย พอเพียง และจิตสาธารณะ</p>
+        </div>
+      </div>
+
+      <div class="news-card">
+        <div class="news-img">🤝</div>
+        <div class="news-content">
+          <h3>SAM CHAIY Network</h3>
+          <p>เครือข่ายความร่วมมือทางการศึกษาระหว่างชายเขา ชายเลน และชายเล</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section feature-section" id="learning">
+    <div class="section-title">
+      <div class="small">COMMUNITY-BASED LEARNING</div>
+      <h2>การเรียนรู้ฐานชุมชน</h2>
+      <p>เชื่อมโยงหลักสูตรข้าวโสมบรรทัด PBL PLC และภูมิปัญญาท้องถิ่น</p>
+    </div>
+
+    <div class="features">
+      <div class="feature-box">
+        <h3>🌾 หลักสูตรข้าวโสมบรรทัด</h3>
+        <p>
+          พื้นที่รวบรวมแผนการจัดการเรียนรู้ หน่วย PBL ผลงานนักเรียน
+          ผลิตภัณฑ์จากฐานทุนชุมชน และองค์ความรู้เกี่ยวกับข้าว โสมบรรทัด และวิถีชุมชนบ้านทุ่งไก่ดัก
+        </p>
+      </div>
+
+      <div class="feature-box">
+        <h3>👩‍🏫 PBL / PLC</h3>
+        <p>
+          พื้นที่สำหรับจัดเก็บร่องรอยการออกแบบการเรียนรู้ การสะท้อนคิดของครู
+          การพัฒนาบทเรียน และกระบวนการเรียนรู้ร่วมกันของครูทั้งโรงเรียน
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="quality">
+    <div class="section-title">
+      <div class="small">QUALITY & INNOVATION</div>
+      <h2>คุณภาพและนวัตกรรม</h2>
+      <p>รวบรวมหลักฐานการพัฒนาคุณภาพสถานศึกษาอย่างเป็นระบบ</p>
+    </div>
+
+    <div class="portal-grid">
+      <div class="portal-card">
+        <div class="portal-icon">🏆</div>
+        <h3>โรงเรียนสุจริต</h3>
+        <p>หลักฐานกิจกรรม ผลงานผู้เรียน การถอดบทเรียน และกระบวนการพัฒนาคุณลักษณะสุจริต</p>
+      </div>
+
+      <div class="portal-card">
+        <div class="portal-icon">📊</div>
+        <h3>IQA / SAR</h3>
+        <p>ระบบประกันคุณภาพภายใน รายงาน SAR และข้อมูลการพัฒนาคุณภาพสถานศึกษา</p>
+      </div>
+
+      <div class="portal-card">
+        <div class="portal-icon">📚</div>
+        <h3>งานวิจัย / วPA</h3>
+        <p>งานวิจัย นวัตกรรม วPA และองค์ความรู้จากการพัฒนางานจริงของโรงเรียน</p>
+      </div>
+
+      <div class="portal-card">
+        <div class="portal-icon">🤝</div>
+        <h3>SAM CHAIY Model</h3>
+        <p>ระบบเครือข่ายและรูปแบบการพัฒนาคุณภาพโรงเรียนอย่างยั่งยืน</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section identity">
+    <h2>รวงข้าวแห่งปัญญา ร่วมพัฒนาคู่ชุมชน</h2>
+    <p>
+      BTKD Smart Portal สร้างขึ้นเพื่อเป็นพื้นที่กลางในการรวบรวม เผยแพร่
+      และต่อยอดองค์ความรู้ของโรงเรียนบ้านทุ่งไก่ดัก
+      ภายใต้อัตลักษณ์ข้าว ดิน ชุมชน และการเรียนรู้เพื่อคุณภาพที่ยั่งยืน
+    </p>
+  </section>
+
+  <footer id="contact">
+    <strong>โรงเรียนบ้านทุ่งไก่ดัก</strong><br>
+    สำนักงานเขตพื้นที่การศึกษาประถมศึกษาตราด<br>
+    BTKD Smart Portal © 2569
   </footer>
 
 </body>
